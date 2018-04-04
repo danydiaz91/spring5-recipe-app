@@ -1,10 +1,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Spring Boot Thymeleaf</title>
+<title>Recipe Home</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
-	<h1>Recipes</h1>
+	<h1>My Recipes!!</h1>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Description</th>
+		</tr>
+		<tr th:each="Recipe : ${recipes}">
+			<td th:text="${recipe.id}">123</td>
+			<td th:text="${recipe.description}">Tasty Goodness</td>
+		</tr>		
+	</table>
 </body>
 </html>

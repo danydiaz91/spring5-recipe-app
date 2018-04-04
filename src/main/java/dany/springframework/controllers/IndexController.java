@@ -3,12 +3,15 @@ package dany.springframework.controllers;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dany.springframework.domain.Category;
 import dany.springframework.domain.UnitOfMeasure;
 import dany.springframework.repositories.CategoryRepository;
+import dany.springframework.repositories.RecipeRepository;
 import dany.springframework.repositories.UnitOfMeasureRepository;
+import dany.springframework.services.RecipeService;
 
 /**
  * 
@@ -18,24 +21,15 @@ import dany.springframework.repositories.UnitOfMeasureRepository;
 @Controller
 public class IndexController {
 
-	private CategoryRepository CategoryRepository;
-	private UnitOfMeasureRepository UnitOfMeasureRepository;
+	private final RecipeService recipeService;
 
-	public IndexController(dany.springframework.repositories.CategoryRepository categoryRepository,
-			dany.springframework.repositories.UnitOfMeasureRepository unitOfMeasureRepository) {
-		super();
-		CategoryRepository = categoryRepository;
-		UnitOfMeasureRepository = unitOfMeasureRepository;
+	public IndexController(RecipeService recipeService) {
+		this.recipeService = recipeService;
 	}
 
 	@RequestMapping({"","/","/index"})
-	public String getIndexPage() {
-		Optional<Category> categoryOptional = CategoryRepository.findByDescription("Mexican");
-		Optional<UnitOfMeasure> unitOfMeasureOptional = UnitOfMeasureRepository.findByDescription("Teaspoon");
-		
-		System.out.println("Category ID: " + categoryOptional.get().getId());
-		System.out.println("Unit Of Measure ID: " + unitOfMeasureOptional.get().getId());
-		
+	public String getIndexPage(Model model) {				
+		model.addAttribute("recipes", recipeService.getRecipes());		
 		return "index";
 	}
 }

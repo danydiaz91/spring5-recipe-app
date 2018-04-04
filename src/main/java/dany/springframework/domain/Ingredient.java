@@ -18,6 +18,14 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Ingredient {
+	
+	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeas, Recipe recipe) {
+		super();
+		this.description = description;
+		this.amount = amount;
+		this.unitOfMeas = unitOfMeas;
+		this.recipe = recipe;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
