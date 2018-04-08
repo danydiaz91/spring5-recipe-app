@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,6 +37,8 @@ public class Recipe {
 	private Integer servings;
 	private String source;
 	private String url;
+	
+	@Column(length = 2000)
 	private String directions;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
@@ -68,32 +71,36 @@ public class Recipe {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public Recipe setDescription(String description) {
 		this.description = description;
+		return this;
 	}
 
 	public Integer getPrepTime() {
 		return prepTime;
 	}
 
-	public void setPrepTime(Integer prepTime) {
+	public Recipe setPrepTime(Integer prepTime) {
 		this.prepTime = prepTime;
+		return this;
 	}
 
 	public Integer getCookTime() {
 		return cookTime;
 	}
 
-	public void setCookTime(Integer cookTime) {
+	public Recipe setCookTime(Integer cookTime) {
 		this.cookTime = cookTime;
+		return this;
 	}
 
 	public Integer getServings() {
 		return servings;
 	}
 
-	public void setServings(Integer servings) {
+	public Recipe setServings(Integer servings) {
 		this.servings = servings;
+		return this;
 	}
 
 	public String getSource() {
@@ -108,55 +115,74 @@ public class Recipe {
 		return url;
 	}
 
-	public void setUrl(String url) {
+	public Recipe setUrl(String url) {
 		this.url = url;
+		return this;
 	}
 
 	public String getDirections() {
 		return directions;
 	}
 
-	public void setDirections(String directions) {
+	public Recipe setDirections(String directions) {
 		this.directions = directions;
+		return this;
 	}
 	
 	public Set<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(Set<Ingredient> ingredients) {
+	public Recipe setIngredients(Set<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+		return this;
 	}
 
 	public Byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Byte[] image) {
+	public Recipe setImage(Byte[] image) {
 		this.image = image;
+		return this;
 	}
 
 	public Notes getNotes() {
 		return notes;
 	}
 
-	public void setNotes(Notes notes) {
+	public Recipe setNotes(Notes notes) {
+		notes.setRecipe(this);
 		this.notes = notes;
+		return this;
 	}
 
 	public Set<Category> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(Set<Category> categories) {
+	public Recipe setCategories(Set<Category> categories) {
 		this.categories = categories;
+		return this;
 	}
 
 	public Difficulty getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(Difficulty difficulty) {
+	public Recipe setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
+		return this;
 	}	
+	
+	public Recipe addIngredient(Ingredient ingredient) {
+		ingredient.setRecipe(this);
+		ingredients.add(ingredient);
+		return this;
+	}
+	
+	public Recipe addCategory(Category category) {
+		categories.add(category);
+		return this;
+	}
 }

@@ -19,12 +19,11 @@ import javax.persistence.OneToOne;
 @Entity
 public class Ingredient {
 	
-	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeas, Recipe recipe) {
+	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeas) {
 		super();
 		this.description = description;
 		this.amount = amount;
 		this.unitOfMeas = unitOfMeas;
-		this.recipe = recipe;
 	}
 
 	@Id
