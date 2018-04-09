@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
+import lombok.Data;
+
 /**
  * 
  * @author Dany Diaz
@@ -14,6 +16,7 @@ import javax.persistence.OneToOne;
  *
  */
 @Entity
+@Data
 public class Notes {
 
 	@Id
@@ -26,19 +29,4 @@ public class Notes {
 	@Lob
 	private String recipeNotes;
 
-	public Recipe getRecipe() {
-		return recipe;
-	}
-
-	public void setRecipe(Recipe recipe) {
-		this.recipe = recipe;
-	}
-
-	public String getRecipeNotes() {
-		return recipeNotes;
-	}
-
-	public void setRecipeNotes(String recipeNotes) {
-		this.recipeNotes = recipeNotes;
-	}
 }

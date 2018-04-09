@@ -82,7 +82,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 				+ "(The oxygen in the air causes oxidation which will turn the guacamole brown.) Refrigerate until ready to serve. "
 				+ "Chilling tomatoes hurts their flavor, so if you want to add chopped tomato to your guacamole, add it just before serving.");
 		
-		Notes guacamoleNotes = new Notes();
+		Notes guacamoleNotes = new Notes();		
 		guacamoleNotes.setRecipeNotes("For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados. "
 				+ "Feel free to experiment! One classic Mexican guacamole has pomegranate seeds and chunks of peaches in it "
 				+ "(a Diana Kennedy favorite). Try guacamole with added pineapple, mango, or strawberries. "
