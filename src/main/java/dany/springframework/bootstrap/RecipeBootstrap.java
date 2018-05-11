@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import dany.springframework.domain.Category;
 import dany.springframework.domain.Difficulty;
@@ -159,6 +160,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 	}
 
 	@Override
+	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
 		recipeRepository.saveAll(getRecipes());		
 	}
