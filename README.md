@@ -1,2 +1,9 @@
-# Spring5-Recipe-App
-Project 01 to practice Spring 5
+# Spring5 Recipe App
+Project to practice Spring5
+
+# Requirements
+
+* Java 8
+* Gradle
+
+# **Dany Diaz**
